@@ -1,0 +1,573 @@
+﻿{
+  "x-generator": "NSwag v11.18.7.0 (NJsonSchema v9.10.70.0 (Newtonsoft.Json v9.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/article": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "operationId": "Article_GetAllArticles",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "operationId": "Article_CreateArticle",
+        "parameters": [
+          {
+            "name": "article",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Article"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "operationId": "Article_UpdateArticle",
+        "parameters": [
+          {
+            "name": "article",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Article"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/article/{id}": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "operationId": "Article_GetArticle",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Article"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Article"
+        ],
+        "operationId": "Article_DeleteArticle",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging": {
+      "get": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_GetAllLogging",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Logging"
+              }
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_CreateLogging",
+        "parameters": [
+          {
+            "name": "logging",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Logging"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging/{id}": {
+      "get": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_GetLoggingById",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Logging"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging/{level}": {
+      "get": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_GetLoggingByLevel",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "level",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Logging"
+              }
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/loggin/{id}": {
+      "delete": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_DeleteLogging",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Article": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "imagePosition",
+        "publishFrom",
+        "publishUntil",
+        "order",
+        "articleState"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "imagePath": {
+          "type": "string"
+        },
+        "imagePosition": {
+          "$ref": "#/definitions/ImagePosition"
+        },
+        "publishFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "publishUntil": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "articleState": {
+          "$ref": "#/definitions/ArticleState"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/NonDeletableBaseModel"
+        }
+      ]
+    },
+    "ImagePosition": {
+      "type": "integer",
+      "description": "",
+      "x-enumFlags": true,
+      "x-enumNames": [
+        "Top",
+        "Left",
+        "Right",
+        "Bottom"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "ArticleState": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Draft",
+        "Published",
+        "Archived"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "File": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "sizeInKb"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/FileType"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sizeInKb": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/DeletableBaseModel"
+        }
+      ]
+    },
+    "FileType": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Pdf",
+        "Excel",
+        "Word",
+        "Text",
+        "Other"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "DeletableBaseModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "createdOn",
+        "modifiedOn"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modifiedOn": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "NonDeletableBaseModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "deletedOn": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/DeletableBaseModel"
+        }
+      ]
+    },
+    "Logging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eventId",
+        "level"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "incidentId": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "exception": {
+          "type": "string"
+        },
+        "stack": {
+          "type": "string"
+        },
+        "level": {
+          "$ref": "#/definitions/LogLevel"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/DeletableBaseModel"
+        }
+      ]
+    },
+    "LogLevel": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Debug",
+        "Information",
+        "Warning",
+        "Error",
+        "Fatal"
+      ],
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  }
+}

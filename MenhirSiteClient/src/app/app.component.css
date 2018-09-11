@@ -1,0 +1,40 @@
+.header {
+    background-color: #F42526;
+    color: white;
+}
+
+.header-top {
+    background-image: url('../assets/images/HorizontalBarTop.png');
+    background-repeat: repeat-x;
+    height:10px;
+}
+
+.header-bottom {
+    background-image: url('../assets/images/HorizontalBarBottom.png');
+    background-repeat: repeat-x;
+    height:12px;
+}
+
+.clubname {
+    font-weight: 400;
+    font-size: 2vw;   
+    line-height: 76px;
+}
+
+.logo {
+    width:150px;
+    margin-top:-15px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 1.5vw;
+}
+
+h2 {
+    font-size: 3.0vh;
+}
+
+p {
+    font-size: 2vmin;
+}
