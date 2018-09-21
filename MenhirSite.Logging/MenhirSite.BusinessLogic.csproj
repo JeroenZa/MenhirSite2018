@@ -48,6 +48,11 @@
     <Compile Include="Authentication\Authenticator.cs" />
     <Compile Include="Authentication\IAuthenticator.cs" />
     <Compile Include="BusinessLogicModule.cs" />
+    <Compile Include="Helpers\AuthenticationHelpers\AuthenticationHelpersRegistrar.cs" />
+    <Compile Include="Helpers\AuthenticationHelpers\IPasswordHelper.cs" />
+    <Compile Include="Helpers\AuthenticationHelpers\ITokenHelper.cs" />
+    <Compile Include="Helpers\AuthenticationHelpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\AuthenticationHelpers\TokenHelper.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\LoggingRegistrar.cs" />
@@ -66,5 +71,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

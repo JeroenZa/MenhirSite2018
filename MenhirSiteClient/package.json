@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "swagger": "nswag webapi2swagger /assembly:..\\menhirsite\\bin\\menhirsite.dll /output:src\\app\\api\\api.services.json /DefaultPropertyNameHandling:CamelCase && nswag swagger2tsclient /input:src/app/api/api.services.json /output:src/app/api/api.services.ts /template:Angular /DateTimeType:MomentJS /typescriptversion:2.2 /HttpClass:HttpClient /InjectionTokenType:InjectionToken && powershell ./api-services-moment-fixes.ps1 -clientsPath src/app/api/api.services.ts"
+    "swagger": "nswag webapi2swagger /assembly:..\\menhirsite\\bin\\menhirsite.dll /output:src\\app\\api\\api.services.json /DefaultPropertyNameHandling:CamelCase && nswag swagger2tsclient /input:src/app/api/api.services.json /output:src/app/api/api.services.ts /template:Angular /DateTimeType:MomentJS /typescriptversion:2.2 /HttpClass:HttpClient /InjectionTokenType:InjectionToken && powershell ./api-services-fixes.ps1 -clientsPath src/app/api/api.services.ts"
   },
   "private": true,
   "dependencies": {

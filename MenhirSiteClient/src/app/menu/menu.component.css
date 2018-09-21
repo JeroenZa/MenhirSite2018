@@ -1,0 +1,9 @@
+.navbar {
+    top: -5px;
+    z-index: 1;
+    position: relative;
+    height: 30px;
+    background-color: darkgray !important;
+    max-width: 1140px;
+    margin: 0px auto;
+}

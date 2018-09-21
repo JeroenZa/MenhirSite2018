@@ -19,6 +19,7 @@ namespace MenhirSite.Model.Context
         public DbSet<Person> People { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Logging> Logging { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         public override int SaveChanges()
         {

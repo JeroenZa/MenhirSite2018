@@ -17,7 +17,7 @@
         "tags": [
           "Article"
         ],
-        "operationId": "Article_GetAllArticles",
+        "operationId": "Article_GetAll",
         "responses": {
           "200": {
             "x-nullable": true,
@@ -42,10 +42,10 @@
         "tags": [
           "Article"
         ],
-        "operationId": "Article_CreateArticle",
+        "operationId": "Article_Create",
         "parameters": [
           {
-            "name": "article",
+            "name": "entity",
             "in": "body",
             "required": true,
             "schema": {
@@ -76,10 +76,10 @@
         "tags": [
           "Article"
         ],
-        "operationId": "Article_UpdateArticle",
+        "operationId": "Article_Update",
         "parameters": [
           {
-            "name": "article",
+            "name": "entity",
             "in": "body",
             "required": true,
             "schema": {
@@ -112,7 +112,7 @@
         "tags": [
           "Article"
         ],
-        "operationId": "Article_GetArticle",
+        "operationId": "Article_Get",
         "parameters": [
           {
             "type": "integer",
@@ -144,7 +144,7 @@
         "tags": [
           "Article"
         ],
-        "operationId": "Article_DeleteArticle",
+        "operationId": "Article_Delete",
         "parameters": [
           {
             "type": "integer",
@@ -174,21 +174,34 @@
         }
       }
     },
-    "/api/logging": {
-      "get": {
+    "/api/authentication/{username}/{password}": {
+      "post": {
         "tags": [
-          "Logging"
+          "Authentication"
         ],
-        "operationId": "Logging_GetAllLogging",
+        "operationId": "Authentication_Authenticate",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "password",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
         "responses": {
           "200": {
-            "x-nullable": true,
+            "x-nullable": false,
             "description": "",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Logging"
-              }
+              "$ref": "#/definitions/ValueTupleOfGuidAndDateTime"
             }
           },
           "409": {
@@ -197,21 +210,70 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
           }
         }
-      },
+      }
+    },
+    "/api/authentication/{token}": {
       "post": {
         "tags": [
-          "Logging"
+          "Authentication"
         ],
-        "operationId": "Logging_CreateLogging",
+        "operationId": "Authentication_Extend",
         "parameters": [
           {
-            "name": "logging",
+            "type": "string",
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ValueTupleOfGuidAndDateTime"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/Generic`1": {
+      "post": {
+        "tags": [
+          "GenericController`1"
+        ],
+        "operationId": "GenericController`1_Create",
+        "parameters": [
+          {
+            "name": "entity",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Logging"
+              "$ref": "#/definitions/T"
             },
             "x-nullable": true
           }
@@ -235,12 +297,110 @@
         }
       }
     },
-    "/api/logging/{id}": {
+    "": {
+      "put": {
+        "tags": [
+          "GenericController`1"
+        ],
+        "operationId": "GenericController`1_Update",
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/T"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "delete": {
+        "tags": [
+          "GenericController`1"
+        ],
+        "operationId": "GenericController`1_Delete",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging/api/logging": {
       "get": {
         "tags": [
           "Logging"
         ],
-        "operationId": "Logging_GetLoggingById",
+        "operationId": "Logging_GetAll",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Logging"
+              }
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging/api/logging/{id}": {
+      "get": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_GetById",
         "parameters": [
           {
             "type": "integer",
@@ -269,12 +429,12 @@
         }
       }
     },
-    "/api/logging/{level}": {
+    "/api/logging/api/logging/{level}": {
       "get": {
         "tags": [
           "Logging"
         ],
-        "operationId": "Logging_GetLoggingByLevel",
+        "operationId": "Logging_GetByLevel",
         "parameters": [
           {
             "type": "string",
@@ -305,12 +465,82 @@
         }
       }
     },
-    "/api/loggin/{id}": {
+    "/api/logging": {
+      "post": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_Create",
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Logging"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Logging"
+        ],
+        "operationId": "Logging_Update",
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Logging"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/logging/{id}": {
       "delete": {
         "tags": [
           "Logging"
         ],
-        "operationId": "Logging_DeleteLogging",
+        "operationId": "Logging_Delete",
         "parameters": [
           {
             "type": "integer",
@@ -328,6 +558,195 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/team": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_GetAll",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_Create",
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_Update",
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/team/{id}": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_Get",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_Delete",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "409": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/team/menu": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "operationId": "Team_GetMenuNames",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           },
           "409": {
@@ -517,6 +936,33 @@
         }
       ]
     },
+    "ValueTupleOfGuidAndDateTime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item1",
+        "item2"
+      ],
+      "properties": {
+        "item1": {
+          "type": "string",
+          "format": "guid"
+        },
+        "item2": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "T": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/DeletableBaseModel"
+        }
+      ]
+    },
     "Logging": {
       "type": "object",
       "additionalProperties": false,
@@ -567,6 +1013,47 @@
         3,
         4,
         5
+      ]
+    },
+    "Team": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active",
+        "activeFrom"
+      ],
+      "properties": {
+        "menuName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nbbId": {
+          "type": "string"
+        },
+        "sportLinkId": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "activeFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "activeUntil": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "teamPhoto": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/NonDeletableBaseModel"
+        }
       ]
     }
   }

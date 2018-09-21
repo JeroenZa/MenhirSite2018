@@ -148,6 +148,8 @@
   <ItemGroup>
     <Compile Include="App_Data\OptionsModule.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GenericController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\LoggingController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />

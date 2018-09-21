@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
-import { ArticleClient, LoggingClient } from './api.services';
+import { ArticleClient, LoggingClient, TeamClient } from './api.services';
 import { HttpClient } from '@angular/common/http';
 
 @NgModule({
@@ -12,6 +12,7 @@ export class ApiModule {
       providers: [
         ArticleClient,
         LoggingClient,
+        TeamClient,
         HttpClient
       ]
     };

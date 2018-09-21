@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MenhirSite.Model;
 using MenhirSite.Repository.Interfaces;
 using MenhirSite.Services.Interface;
@@ -14,9 +15,14 @@ namespace MenhirSite.Services
             _repository = repository;
         }
 
-        public async Task<User> GetUserByUsername(string username)
+        public async Task<User> GetUserByUsernameAsync(string username)
         {
             return await _repository.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        public async Task<User> GetUserByTokenAsync(Guid token)
+        {
+            return await _repository.FirstOrDefaultAsync(u => u.AuthenticationToken == token);
         }
     }
 }

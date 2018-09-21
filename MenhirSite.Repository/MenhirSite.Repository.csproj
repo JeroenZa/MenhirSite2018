@@ -48,10 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ITeamRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="LoggingRepository.cs" />
     <Compile Include="FileRepository.cs" />
     <Compile Include="Interfaces\ILoggingRepository.cs" />
+    <Compile Include="TeamRepository.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="MatchRepository.cs" />
     <Compile Include="ArticleRepository.cs" />

@@ -25,7 +25,7 @@ namespace MenhirSite.Services
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            _repository.Add(entity ?? throw new ArgumentNullException());
+            _repository.Add(entity);
             return _unitOfWork.Commit();
         }
 
@@ -72,5 +72,11 @@ namespace MenhirSite.Services
         {
             return _repository.FindBy(predicate);
         }
+
+        protected virtual async Task<T> FindByPredicate(Expression<Func<T, bool>> p)
+        {
+            return await _repository.FirstOrDefaultAsync(p);
+        }
+
     }
 }

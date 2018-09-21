@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './articles/articles.component';
 import { ApiModule } from './api/api.module';
 import { HttpClientModule } from '@angular/common/http';
 import { API_BASE_URL } from './api/api.services';
 import { MenuComponent } from './menu/menu.component';
+import { HomeModule } from './home/home.module';
+import { ArticlesModule } from './articles/articles.module';
 
 export function apiBaseUrl() {
   return 'http://localhost/MenhirSite';
@@ -15,12 +16,13 @@ export function apiBaseUrl() {
 @NgModule({
   declarations: [
     AppComponent,
-    ArticlesComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
+    ArticlesModule,
     HttpClientModule,
+    HomeModule,
     ApiModule.forRoot(),
   ],
   providers: [

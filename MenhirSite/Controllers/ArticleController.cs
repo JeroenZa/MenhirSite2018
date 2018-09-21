@@ -13,126 +13,52 @@ using NSwag.Annotations;
 namespace MenhirSite.Controllers
 {
     [AutofacControllerConfiguration]
-    public class ArticleController : ApiController
+    [RoutePrefix("api/article")]
+    public class ArticleController : GenericController<Article>
     {
-        private readonly IArticleService _articleService;
+        private readonly IGenericService<Article> _service;
         private readonly ILogger _logger;
 
-        public ArticleController(IArticleService articleService, 
-                                 ILogger logger)
+        public ArticleController(IGenericService<Article> service, ILogger logger) : base(service, logger)
         {
-            _articleService = articleService;
+            _service = service;
             _logger = logger;
         }
 
         [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-        [Route("api/article")]
+        [HttpGet]
         [SwaggerResponse(HttpStatusCode.OK, typeof(IEnumerable<Article>))]
         [SwaggerResponse(HttpStatusCode.Conflict, typeof(bool))]
-        public async Task<IHttpActionResult> GetAllArticles()
+        public async Task<IHttpActionResult> GetAll()
         {
             try
             {
-                _logger.WriteLog(LogLevel.Information, "All articles requested");                
-                var allArticles = await _articleService.GetAllAsync();
-                return Ok(allArticles);
+                _logger.WriteLog(LogLevel.Information, $"ArticleController GetAll requested");
+                var all = await _service.GetAllAsync();
+                return Ok(all);
             }
             catch (Exception e)
             {
-                _logger.WriteLog(LogLevel.Error, "Exception occured in ArticeController.GetAllArticles", e.Message, e.StackTrace);
+                _logger.WriteLog(LogLevel.Error, $"Exception occured in ArticleController.GetAll", e.Message, e.StackTrace);
                 return StatusCode(HttpStatusCode.Conflict);
             }
         }
 
         [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-        [Route("api/article/{id}")]
+        [Route("{id}")]
         [SwaggerResponse(HttpStatusCode.OK, typeof(Article))]
         [SwaggerResponse(HttpStatusCode.Conflict, typeof(bool))]
-        public IHttpActionResult GetArticle(int id)
+        public IHttpActionResult Get(int id)
         {
             try
             {
-                _logger.WriteLog(LogLevel.Information, "Article requested");
-                var article = _articleService.GetById(id);
-                return Ok(article);
+                _logger.WriteLog(LogLevel.Information, $"ArticleController Get requested");
+                var entity = _service.GetById(id);
+                return Ok(entity);
             }
             catch (Exception e)
             {
-                _logger.WriteLog(LogLevel.Error, "Exception occured in ArticeController.GetArticle", e.Message, e.StackTrace);
-                return StatusCode(HttpStatusCode.Conflict);
-            }
-        }
-
-        [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-        [Route("api/article")]
-        [HttpPost]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(int))]
-        [SwaggerResponse(HttpStatusCode.Conflict, typeof(bool))]
-        public IHttpActionResult CreateArticle([FromBody] Article article)
-        {
-            try
-            {
-                _logger.WriteLog(LogLevel.Information, "Create article requested");
-                var committed = _articleService.Create(article);
-
-                if (committed == 0)
-                    return BadRequest("Article could not be saved");
-
-                return Ok(article.Id);
-            }
-            catch (Exception e)
-            {
-                _logger.WriteLog(LogLevel.Error, "Exception occured in ArticeController.CreateArticle", e.Message, e.StackTrace);
-                return StatusCode(HttpStatusCode.Conflict);
-            }
-        }
-
-        [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-        [Route("api/article/{id}")]
-        [HttpPut]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(int))]
-        [SwaggerResponse(HttpStatusCode.Conflict, typeof(bool))]
-        public IHttpActionResult UpdateArticle([FromBody] Article article)
-        {
-            try
-            {
-                _logger.WriteLog(LogLevel.Information, $"Update of article with id {article.Id} requested");
-                var committed = _articleService.Update(article);
-
-                if (committed == 0)
-                    return BadRequest("Article could not be saved");
-
-                return Ok(article.Id);
-            }
-            catch (Exception e)
-            {
-                _logger.WriteLog(LogLevel.Error, "Exception occured in ArticeController.UpdateArticle", e.Message, e.StackTrace);
-                return StatusCode(HttpStatusCode.Conflict);
-            }
-        }
-
-        [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-        [Route("api/article/{id}")]
-        [HttpDelete]
-        [SwaggerResponse(HttpStatusCode.OK, typeof(int))]
-        [SwaggerResponse(HttpStatusCode.Conflict, typeof(bool))]
-        public IHttpActionResult DeleteArticle(int id)
-        {
-            try
-            {
-                _logger.WriteLog(LogLevel.Information, $"Delete of article {id} requested");
-                var articleToDelete = _articleService.GetById(id);
-
-                if (articleToDelete == null)
-                    return BadRequest ($"Article with id {id} not found");
-
-                _articleService.Delete(articleToDelete);
-
-                return Ok(id);
-            }
-            catch (Exception e)
-            {
-                _logger.WriteLog(LogLevel.Error, "Exception occured in ArticeController.Delete", e.Message, e.StackTrace);
+                _logger.WriteLog(LogLevel.Error, $"Exception occured in ArticleController.Get", e.Message, e.StackTrace);
                 return StatusCode(HttpStatusCode.Conflict);
             }
         }

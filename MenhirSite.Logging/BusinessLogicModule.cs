@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using MenhirSite.BusinessLogic.Logging;
 using MenhirSite.BusinessLogic.Authentication;
+using MenhirSite.BusinessLogic.Helpers.AuthenticationHelpers;
 
 namespace MenhirSite.BusinessLogic
 {
@@ -10,6 +11,7 @@ namespace MenhirSite.BusinessLogic
         {
             LoggingRegistrar.Register(builder);
             AuthenticationRegistrar.Register(builder);
+            AuthenticationHelpersRegistrar.Register(builder);
         }
     }
 }

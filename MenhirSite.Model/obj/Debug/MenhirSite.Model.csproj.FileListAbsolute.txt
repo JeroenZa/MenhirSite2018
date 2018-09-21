@@ -42,3 +42,4 @@ C:\Private projects\MenhirSite2018\MenhirSite.Model\obj\Debug\MenhirSite.Model.c
 C:\Private projects\MenhirSite2018\MenhirSite.Model\obj\Debug\MenhirSite.Model.csproj.CopyComplete
 C:\Private projects\MenhirSite2018\MenhirSite.Model\obj\Debug\MenhirSite.Model.dll
 C:\Private projects\MenhirSite2018\MenhirSite.Model\obj\Debug\MenhirSite.Model.pdb
+C:\Private projects\MenhirSite2018\MenhirSite.Model\obj\Debug\MenhirSite.Model.Migrations.TeamModelAdded.resources

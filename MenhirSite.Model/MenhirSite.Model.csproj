@@ -80,9 +80,14 @@
     <Compile Include="Migrations\201809051310515_AddedAuthenticationAndMorePersonData.Designer.cs">
       <DependentUpon>201809051310515_AddedAuthenticationAndMorePersonData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809201247173_TeamModelAdded.cs" />
+    <Compile Include="Migrations\201809201247173_TeamModelAdded.Designer.cs">
+      <DependentUpon>201809201247173_TeamModelAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SponsorModels.cs" />
+    <Compile Include="TeamModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809051310515_AddedAuthenticationAndMorePersonData.resx">
       <DependentUpon>201809051310515_AddedAuthenticationAndMorePersonData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809201247173_TeamModelAdded.resx">
+      <DependentUpon>201809201247173_TeamModelAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
